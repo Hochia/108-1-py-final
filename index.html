@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>什麼是神經網絡？從一個遊戲開始!</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Machine Learning - CNN in python</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="data_description.html">資料介紹</a>
+</li>
+<li>
+  <a href="python_setup.html">
+    <span class="ion ion-social-python"></span>
+     
+    Python 設定
+  </a>
+</li>
+<li>
+  <a href="models.html">模型</a>
+</li>
+<li>
+  <a href="results.html">
+    <span class="ion ion-android-laptop"></span>
+     
+    報告
+  </a>
+</li>
+<li>
+  <a href="conclusions.html">後記</a>
+</li>
+<li>
+  <a href="references.html">
+    <span class="ion ion-android-bookmark"></span>
+     
+    參考資料
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class="ion ion-social-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">什麼是神經網絡？從一個遊戲開始!</h1>
+
+</div>
+
+
+<p><br></p>
+<p><img src="pic/CNN1.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><br></p>
+<div id="johan-eliasson-site" class="section level3">
+<h3>Johan Eliasson <a href="https://www.youtube.com/watch?v=wL7tSgUpy8w">Site</a></h3>
+<p><br> <br></p>
+</div>
+<div id="ai赛车手如何快速炼成" class="section level3">
+<h3>AI赛车手如何快速炼成？</h3>
+<hr />
+</div>
+<div id="首先要有一个庞大的车队" class="section level2">
+<h2>首先，要有一个庞大的车队。</h2>
+<div id="他的训练计划里有650辆车同时训练" class="section level4">
+<h4>他的训练计划里，有650辆车同时训练</h4>
+<hr />
+</div>
+</div>
+<div id="第二ai开车需要一些空间信息" class="section level2">
+<h2>第二，AI开车需要一些空间信息。</h2>
+<p><br></p>
+<p><img src="pic/CNN2.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><br></p>
+<div id="输入五条黄线当前速率和方向共七种" class="section level4">
+<h4>输入：五条黄线+当前速率和方向，共七种</h4>
+<p><br></p>
+</div>
+<div id="输出方向盘左转右转不变油门刹车加速减速不变" class="section level4">
+<h4>输出：方向盘(左转、右转、不变)；油门/刹车(加速、减速、不变)。</h4>
+<hr />
+</div>
+</div>
+<div id="第三让神经网络不断进化" class="section level2">
+<h2>第三，让神经网络不断进化</h2>
+<p><br></p>
+<p><img src="pic/CNN3.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><br></p>
+<div id="虽然它并没有成功掉头但依然是下一代的希望" class="section level4">
+<h4>虽然，它并没有成功掉头，但依然是下一代的希望</h4>
+<p><br></p>
+</div>
+<div id="所以第二代的650辆车全是这一只智能体的子嗣各自有些轻微的变异神经网络的权重发生小小的变化" class="section level4">
+<h4>所以，第二代的650辆车，全是这一只智能体的子嗣，各自有些轻微的变异：<strong>神经网络的权重发生小小的变化</strong>。</h4>
+<p><br></p>
+<p><img src="pic/CNN4.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<hr />
+</div>
+<div id="第四代便有智能体跑完一周" class="section level4">
+<h4>第四代，便有智能体跑完一周</h4>
+<p><br></p>
+<p><img src="pic/CNN5.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<hr />
+</div>
+<div id="playground.tensorflow" class="section level3">
+<h3>playground.tensorflow</h3>
+<p><br></p>
+</div>
+<div id="游乐场入口" class="section level3">
+<h3><a href="http://playground.tensorflow.org">游乐场入口</a></h3>
+<hr />
+</div>
+</div>
+<div id="传统神经网络" class="section level2">
+<h2>传统神经网络</h2>
+<p><img src="pic/CT.jpg" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<hr />
+</div>
+<div id="卷积神经网络" class="section level2">
+<h2>卷积神经网络</h2>
+<p><img src="pic/CNN7.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<hr />
+</div>
+<div id="卷积层" class="section level2">
+<h2>卷积层</h2>
+<p><img src="pic/CNN9.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><img src="pic/CNN6.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><img src="pic/BYJC.png" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<hr />
+</div>
+<div id="池化层" class="section level2">
+<h2>池化层</h2>
+<p><img src="pic/CHC.webp" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+<div id="池化层夹在连续的卷积层中间-用于压缩数据和参数的量减小过拟合" class="section level3">
+<h3>池化层夹在连续的卷积层中间， 用于压缩数据和参数的量，减小过拟合。</h3>
+</div>
+<div id="简而言之如果输入是图像的话那么池化层的最主要作用就是压缩图像" class="section level3">
+<h3>简而言之，如果输入是图像的话，那么池化层的最主要作用就是压缩图像。</h3>
+<hr />
+</div>
+</div>
+<div id="为什么是卷积神经网络" class="section level2">
+<h2>为什么是卷积神经网络？</h2>
+<p><br></p>
+<div id="图像的特性决定" class="section level4">
+<h4>图像的特性决定</h4>
+<p><br></p>
+</div>
+<div id="运算效率大大加快" class="section level4">
+<h4>运算效率大大加快</h4>
+<p><br></p>
+</div>
+<div id="学习的过程更像ai" class="section level4">
+<h4>学习的过程更像AI</h4>
+<hr />
+</div>
+</div>
+<div id="mnist手写数据集识别神经网络图像分类的hello-world" class="section level2">
+<h2>MNIST手写数据集识别（神经网络图像分类的Hello world）</h2>
+<p><br></p>
+<div id="一个手写8的例子" class="section level3">
+<h3>一个手写8的例子</h3>
+<p><br></p>
+<p><img src="pic/CNN8.webp" width="40%" style="display: block; margin: auto auto auto 0;" /></p>
+<p><br></p>
+</div>
+<div id="我们程序的结果之一" class="section level3">
+<h3>我们程序的结果之一</h3>
+<p><br></p>
+</div>
+<div id="loss0.0519-accuracy0.9842" class="section level3">
+<h3>loss:0.0519 accuracy:0.9842</h3>
+<p><br></p>
+<p><img src="pic/minst.png" width="80%" style="display: block; margin: auto auto auto 0;" /></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

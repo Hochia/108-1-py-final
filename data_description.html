@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>data_description.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Machine Learning - CNN in python</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="data_description.html">資料介紹</a>
+</li>
+<li>
+  <a href="python_setup.html">
+    <span class="ion ion-social-python"></span>
+     
+    Python 設定
+  </a>
+</li>
+<li>
+  <a href="models.html">模型</a>
+</li>
+<li>
+  <a href="results.html">
+    <span class="ion ion-android-laptop"></span>
+     
+    報告
+  </a>
+</li>
+<li>
+  <a href="conclusions.html">後記</a>
+</li>
+<li>
+  <a href="references.html">
+    <span class="ion ion-android-bookmark"></span>
+     
+    參考資料
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class="ion ion-social-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<p><br> <br> <br></p>
+<p>使用 MNIST 手寫數字的資料集，紀錄數字<span class="math inline">\(0\sim 10\)</span>，共有<span class="math inline">\(10\)</span>個類別。 包括共有<span class="math inline">\(60,000\)</span>筆訓練資料，與<span class="math inline">\(10,000\)</span>筆測試資料。</p>
+<p>程式碼的命名方式如下，<code>x</code> 指的是圖片，<code>y</code> 指的是圖片對應的數字， <code>_train</code> 是指訓練資料，<code>_test</code> 是指測試資料。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># 匯入資料</span></a>
+<a class="sourceLine" id="cb1-2" title="2">(x_train, y_train), (x_test, y_test) <span class="op">=</span> mnist.load_data()</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">x_train.shape</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt; (60000, 28, 28)</span></a>
+<a class="sourceLine" id="cb1-6" title="6">y_train.shape</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; (60000,)</span></a>
+<a class="sourceLine" id="cb1-8" title="8">x_test.shape</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; (10000, 28, 28)</span></a>
+<a class="sourceLine" id="cb1-10" title="10">y_test.shape</a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; (10000,)</span></a>
+<a class="sourceLine" id="cb1-12" title="12">img_rows, img_cols <span class="op">=</span> <span class="dv">28</span>, <span class="dv">28</span> <span class="co"># 每張圖片的資料維度</span></a>
+<a class="sourceLine" id="cb1-13" title="13">num_classes <span class="op">=</span> <span class="dv">10</span> <span class="co"># 圖片類別數</span></a></code></pre></div>
+<p>原始資料是屬於三維陣列，分別為圖片張數、行數與列數。將圖片轉成。 圖片的數字是以<span class="math inline">\(0\sim 255\)</span>表示手寫筆劃顏色的深淺， 所以將圖片的資訊做轉換，變成以<span class="math inline">\(0\sim 1\)</span>表示。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># 資料轉換</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="cf">if</span> K.image_data_format() <span class="op">==</span> <span class="st">&#39;channels_first&#39;</span>:</a>
+<a class="sourceLine" id="cb2-3" title="3">    x_train <span class="op">=</span> x_train.reshape(x_train.shape[<span class="dv">0</span>], <span class="dv">1</span>, img_rows, img_cols)</a>
+<a class="sourceLine" id="cb2-4" title="4">    x_test <span class="op">=</span> x_test.reshape(x_test.shape[<span class="dv">0</span>], <span class="dv">1</span>, img_rows, img_cols)</a>
+<a class="sourceLine" id="cb2-5" title="5">    input_shape <span class="op">=</span> (<span class="dv">1</span>, img_rows, img_cols)</a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb2-7" title="7">    x_train <span class="op">=</span> x_train.reshape(x_train.shape[<span class="dv">0</span>], img_rows, img_cols, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-8" title="8">    x_test <span class="op">=</span> x_test.reshape(x_test.shape[<span class="dv">0</span>], img_rows, img_cols, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-9" title="9">    input_shape <span class="op">=</span> (img_rows, img_cols, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-10" title="10">    </a>
+<a class="sourceLine" id="cb2-11" title="11">x_train.shape</a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; (60000, 28, 28, 1)</span></a>
+<a class="sourceLine" id="cb2-13" title="13">y_train.shape</a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; (60000,)</span></a>
+<a class="sourceLine" id="cb2-15" title="15">x_test.shape</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; (10000, 28, 28, 1)</span></a>
+<a class="sourceLine" id="cb2-17" title="17">y_test.shape</a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; (10000,)</span></a>
+<a class="sourceLine" id="cb2-19" title="19">x_train <span class="op">=</span> x_train.astype(<span class="st">&#39;float32&#39;</span>)</a>
+<a class="sourceLine" id="cb2-20" title="20">x_test <span class="op">=</span> x_test.astype(<span class="st">&#39;float32&#39;</span>)</a>
+<a class="sourceLine" id="cb2-21" title="21">x_train <span class="op">/=</span> <span class="dv">255</span></a>
+<a class="sourceLine" id="cb2-22" title="22">x_test <span class="op">/=</span> <span class="dv">255</span></a></code></pre></div>
+<p>用 <code>pcolormesh()</code> 畫出第一個數字的圖片，函數會以 <code>Z</code> 座標的值決定顏色。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1">x1 <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">29</span>))</a>
+<a class="sourceLine" id="cb3-2" title="2">y1 <span class="op">=</span>x1</a>
+<a class="sourceLine" id="cb3-3" title="3">X,Y<span class="op">=</span>np.meshgrid(x1, y1)</a>
+<a class="sourceLine" id="cb3-4" title="4">Z<span class="op">=</span>x_test[[<span class="dv">1</span>]].reshape([<span class="dv">28</span>,<span class="dv">28</span>])</a>
+<a class="sourceLine" id="cb3-5" title="5">plt.cla()</a>
+<a class="sourceLine" id="cb3-6" title="6">plt.pcolormesh(X,Y,Z)</a>
+<a class="sourceLine" id="cb3-7" title="7">plt.show()</a></code></pre></div>
+<p><img src="data_description_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="data_description_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>透過 <code>subplots()</code> 進行多張圖片的合併。展示前 <span class="math inline">\(100\)</span> 筆資料的數字圖片。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="co">## 訓練資料</span></a>
+<a class="sourceLine" id="cb4-2" title="2">plot_dim<span class="op">=</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb4-3" title="3">num1 <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">0</span>,plot_dim))</a>
+<a class="sourceLine" id="cb4-4" title="4">num2 <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">0</span>,plot_dim))</a>
+<a class="sourceLine" id="cb4-5" title="5">x1 <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">29</span>))</a>
+<a class="sourceLine" id="cb4-6" title="6">y1 <span class="op">=</span>x1</a>
+<a class="sourceLine" id="cb4-7" title="7">X,Y<span class="op">=</span>np.meshgrid(x1, y1)</a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9">fig, axs <span class="op">=</span> plt.subplots(plot_dim,plot_dim,</a>
+<a class="sourceLine" id="cb4-10" title="10">                        gridspec_kw<span class="op">=</span>{<span class="st">&#39;wspace&#39;</span>: <span class="dv">0</span>, <span class="st">&#39;hspace&#39;</span>: <span class="dv">0</span>})</a>
+<a class="sourceLine" id="cb4-11" title="11">k<span class="op">=</span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="cf">for</span> i <span class="kw">in</span> num1:</a>
+<a class="sourceLine" id="cb4-13" title="13">  <span class="cf">for</span> j <span class="kw">in</span> num2:</a>
+<a class="sourceLine" id="cb4-14" title="14">    Z<span class="op">=</span>x_train[[k]].reshape([<span class="dv">28</span>,<span class="dv">28</span>])</a>
+<a class="sourceLine" id="cb4-15" title="15">    axs[i,j].pcolormesh(X,Y,Z)</a>
+<a class="sourceLine" id="cb4-16" title="16">    axs[i,j].invert_yaxis()</a>
+<a class="sourceLine" id="cb4-17" title="17">    axs[i,j].axis(<span class="st">&#39;off&#39;</span>)</a>
+<a class="sourceLine" id="cb4-18" title="18">    k<span class="op">+=</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12ABEA90&gt;</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12ABECF8&gt;</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD2048&gt;</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD22B0&gt;</span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD2550&gt;</span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-29" title="29"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD27F0&gt;</span></a>
+<a class="sourceLine" id="cb4-30" title="30"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-31" title="31"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD2A90&gt;</span></a>
+<a class="sourceLine" id="cb4-32" title="32"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-33" title="33"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D12AD2D30&gt;</span></a>
+<a class="sourceLine" id="cb4-34" title="34"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-35" title="35"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13000048&gt;</span></a>
+<a class="sourceLine" id="cb4-36" title="36"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-37" title="37"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130002B0&gt;</span></a>
+<a class="sourceLine" id="cb4-38" title="38"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-39" title="39"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13000550&gt;</span></a>
+<a class="sourceLine" id="cb4-40" title="40"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-41" title="41"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130007F0&gt;</span></a>
+<a class="sourceLine" id="cb4-42" title="42"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-43" title="43"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13000A90&gt;</span></a>
+<a class="sourceLine" id="cb4-44" title="44"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-45" title="45"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13000D30&gt;</span></a>
+<a class="sourceLine" id="cb4-46" title="46"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-47" title="47"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13013048&gt;</span></a>
+<a class="sourceLine" id="cb4-48" title="48"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-49" title="49"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130132B0&gt;</span></a>
+<a class="sourceLine" id="cb4-50" title="50"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-51" title="51"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13013550&gt;</span></a>
+<a class="sourceLine" id="cb4-52" title="52"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-53" title="53"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130137F0&gt;</span></a>
+<a class="sourceLine" id="cb4-54" title="54"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-55" title="55"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13013A90&gt;</span></a>
+<a class="sourceLine" id="cb4-56" title="56"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-57" title="57"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13013D30&gt;</span></a>
+<a class="sourceLine" id="cb4-58" title="58"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-59" title="59"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13022048&gt;</span></a>
+<a class="sourceLine" id="cb4-60" title="60"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-61" title="61"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130222B0&gt;</span></a>
+<a class="sourceLine" id="cb4-62" title="62"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-63" title="63"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13022550&gt;</span></a>
+<a class="sourceLine" id="cb4-64" title="64"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-65" title="65"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130227F0&gt;</span></a>
+<a class="sourceLine" id="cb4-66" title="66"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-67" title="67"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13022A90&gt;</span></a>
+<a class="sourceLine" id="cb4-68" title="68"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-69" title="69"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13022D30&gt;</span></a>
+<a class="sourceLine" id="cb4-70" title="70"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-71" title="71"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13032048&gt;</span></a>
+<a class="sourceLine" id="cb4-72" title="72"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-73" title="73"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130322B0&gt;</span></a>
+<a class="sourceLine" id="cb4-74" title="74"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-75" title="75"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13032550&gt;</span></a>
+<a class="sourceLine" id="cb4-76" title="76"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-77" title="77"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130327F0&gt;</span></a>
+<a class="sourceLine" id="cb4-78" title="78"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-79" title="79"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13032A90&gt;</span></a>
+<a class="sourceLine" id="cb4-80" title="80"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-81" title="81"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13032D30&gt;</span></a>
+<a class="sourceLine" id="cb4-82" title="82"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-83" title="83"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13042048&gt;</span></a>
+<a class="sourceLine" id="cb4-84" title="84"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-85" title="85"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130422B0&gt;</span></a>
+<a class="sourceLine" id="cb4-86" title="86"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-87" title="87"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13042550&gt;</span></a>
+<a class="sourceLine" id="cb4-88" title="88"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-89" title="89"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130427F0&gt;</span></a>
+<a class="sourceLine" id="cb4-90" title="90"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-91" title="91"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13042A90&gt;</span></a>
+<a class="sourceLine" id="cb4-92" title="92"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-93" title="93"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13042D30&gt;</span></a>
+<a class="sourceLine" id="cb4-94" title="94"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-95" title="95"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13052048&gt;</span></a>
+<a class="sourceLine" id="cb4-96" title="96"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-97" title="97"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130522B0&gt;</span></a>
+<a class="sourceLine" id="cb4-98" title="98"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-99" title="99"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13052550&gt;</span></a>
+<a class="sourceLine" id="cb4-100" title="100"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-101" title="101"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130527F0&gt;</span></a>
+<a class="sourceLine" id="cb4-102" title="102"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-103" title="103"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13052A90&gt;</span></a>
+<a class="sourceLine" id="cb4-104" title="104"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-105" title="105"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13052D30&gt;</span></a>
+<a class="sourceLine" id="cb4-106" title="106"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-107" title="107"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13065048&gt;</span></a>
+<a class="sourceLine" id="cb4-108" title="108"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-109" title="109"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130652B0&gt;</span></a>
+<a class="sourceLine" id="cb4-110" title="110"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-111" title="111"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13065550&gt;</span></a>
+<a class="sourceLine" id="cb4-112" title="112"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-113" title="113"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130657F0&gt;</span></a>
+<a class="sourceLine" id="cb4-114" title="114"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-115" title="115"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13065A90&gt;</span></a>
+<a class="sourceLine" id="cb4-116" title="116"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-117" title="117"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13065D30&gt;</span></a>
+<a class="sourceLine" id="cb4-118" title="118"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-119" title="119"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13074048&gt;</span></a>
+<a class="sourceLine" id="cb4-120" title="120"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-121" title="121"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130742B0&gt;</span></a>
+<a class="sourceLine" id="cb4-122" title="122"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-123" title="123"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13074550&gt;</span></a>
+<a class="sourceLine" id="cb4-124" title="124"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-125" title="125"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130747F0&gt;</span></a>
+<a class="sourceLine" id="cb4-126" title="126"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-127" title="127"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13074A90&gt;</span></a>
+<a class="sourceLine" id="cb4-128" title="128"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-129" title="129"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13074D30&gt;</span></a>
+<a class="sourceLine" id="cb4-130" title="130"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-131" title="131"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13085048&gt;</span></a>
+<a class="sourceLine" id="cb4-132" title="132"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-133" title="133"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130852B0&gt;</span></a>
+<a class="sourceLine" id="cb4-134" title="134"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-135" title="135"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13085550&gt;</span></a>
+<a class="sourceLine" id="cb4-136" title="136"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-137" title="137"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130857F0&gt;</span></a>
+<a class="sourceLine" id="cb4-138" title="138"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-139" title="139"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13085A90&gt;</span></a>
+<a class="sourceLine" id="cb4-140" title="140"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-141" title="141"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13085D30&gt;</span></a>
+<a class="sourceLine" id="cb4-142" title="142"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-143" title="143"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13094048&gt;</span></a>
+<a class="sourceLine" id="cb4-144" title="144"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-145" title="145"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130942B0&gt;</span></a>
+<a class="sourceLine" id="cb4-146" title="146"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-147" title="147"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13094550&gt;</span></a>
+<a class="sourceLine" id="cb4-148" title="148"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-149" title="149"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130947F0&gt;</span></a>
+<a class="sourceLine" id="cb4-150" title="150"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-151" title="151"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13094A90&gt;</span></a>
+<a class="sourceLine" id="cb4-152" title="152"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-153" title="153"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D13094D30&gt;</span></a>
+<a class="sourceLine" id="cb4-154" title="154"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-155" title="155"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A6048&gt;</span></a>
+<a class="sourceLine" id="cb4-156" title="156"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-157" title="157"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A62B0&gt;</span></a>
+<a class="sourceLine" id="cb4-158" title="158"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-159" title="159"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A6550&gt;</span></a>
+<a class="sourceLine" id="cb4-160" title="160"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-161" title="161"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A67F0&gt;</span></a>
+<a class="sourceLine" id="cb4-162" title="162"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-163" title="163"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A6A90&gt;</span></a>
+<a class="sourceLine" id="cb4-164" title="164"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-165" title="165"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130A6D30&gt;</span></a>
+<a class="sourceLine" id="cb4-166" title="166"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-167" title="167"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B5048&gt;</span></a>
+<a class="sourceLine" id="cb4-168" title="168"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-169" title="169"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B52B0&gt;</span></a>
+<a class="sourceLine" id="cb4-170" title="170"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-171" title="171"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B5550&gt;</span></a>
+<a class="sourceLine" id="cb4-172" title="172"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-173" title="173"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B57F0&gt;</span></a>
+<a class="sourceLine" id="cb4-174" title="174"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-175" title="175"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B5A90&gt;</span></a>
+<a class="sourceLine" id="cb4-176" title="176"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-177" title="177"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130B5D30&gt;</span></a>
+<a class="sourceLine" id="cb4-178" title="178"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-179" title="179"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C5048&gt;</span></a>
+<a class="sourceLine" id="cb4-180" title="180"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-181" title="181"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C52B0&gt;</span></a>
+<a class="sourceLine" id="cb4-182" title="182"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-183" title="183"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C5550&gt;</span></a>
+<a class="sourceLine" id="cb4-184" title="184"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-185" title="185"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C57F0&gt;</span></a>
+<a class="sourceLine" id="cb4-186" title="186"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-187" title="187"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C5A90&gt;</span></a>
+<a class="sourceLine" id="cb4-188" title="188"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-189" title="189"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130C5D30&gt;</span></a>
+<a class="sourceLine" id="cb4-190" title="190"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-191" title="191"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D7048&gt;</span></a>
+<a class="sourceLine" id="cb4-192" title="192"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-193" title="193"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D72B0&gt;</span></a>
+<a class="sourceLine" id="cb4-194" title="194"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-195" title="195"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D7550&gt;</span></a>
+<a class="sourceLine" id="cb4-196" title="196"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-197" title="197"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D77F0&gt;</span></a>
+<a class="sourceLine" id="cb4-198" title="198"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-199" title="199"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D7A90&gt;</span></a>
+<a class="sourceLine" id="cb4-200" title="200"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-201" title="201"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130D7D30&gt;</span></a>
+<a class="sourceLine" id="cb4-202" title="202"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-203" title="203"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E7048&gt;</span></a>
+<a class="sourceLine" id="cb4-204" title="204"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-205" title="205"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E72B0&gt;</span></a>
+<a class="sourceLine" id="cb4-206" title="206"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-207" title="207"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E7550&gt;</span></a>
+<a class="sourceLine" id="cb4-208" title="208"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-209" title="209"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E77F0&gt;</span></a>
+<a class="sourceLine" id="cb4-210" title="210"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-211" title="211"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E7A90&gt;</span></a>
+<a class="sourceLine" id="cb4-212" title="212"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-213" title="213"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130E7D30&gt;</span></a>
+<a class="sourceLine" id="cb4-214" title="214"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-215" title="215"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130F8048&gt;</span></a>
+<a class="sourceLine" id="cb4-216" title="216"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-217" title="217"><span class="co">#&gt; &lt;matplotlib.collections.QuadMesh object at 0x0000013D130F82B0&gt;</span></a>
+<a class="sourceLine" id="cb4-218" title="218"><span class="co">#&gt; (1.0, 28.0, 28.0, 1.0)</span></a>
+<a class="sourceLine" id="cb4-219" title="219">plt.show()</a></code></pre></div>
+<p><img src="data_description_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

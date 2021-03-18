@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>models.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Machine Learning - CNN in python</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="data_description.html">資料介紹</a>
+</li>
+<li>
+  <a href="python_setup.html">
+    <span class="ion ion-social-python"></span>
+     
+    Python 設定
+  </a>
+</li>
+<li>
+  <a href="models.html">模型</a>
+</li>
+<li>
+  <a href="results.html">
+    <span class="ion ion-android-laptop"></span>
+     
+    報告
+  </a>
+</li>
+<li>
+  <a href="conclusions.html">後記</a>
+</li>
+<li>
+  <a href="references.html">
+    <span class="ion ion-android-bookmark"></span>
+     
+    參考資料
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a>
+    <span class="ion ion-social-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+
+<p><br> <br> <br></p>
+<p>根據 Keras 文件所敘述的神經層，我們使用卷積層、池化層、核心層這三種神經層建構神經網路。這些神經層分別有不同的意義，在此不多做解釋。</p>
+<p>說明程式碼的意義， <code>Sequential()</code> 是用來配置訓練的模型，在後續接一系列的神經層。 <code>Conv2D()</code> 是卷積層，視窗的大小由 <code>kernel_size</code> 設定，<code>activation</code> 決定使用的活化函數。 <code>MaxPooling2D()</code> 是池化層，處理卷積層的訊息。 <code>Dropout()</code> 決定屏蔽的比例。 <code>Dense()</code> 是全連接層。 在神經層決定後，使用 <code>compile()</code> 配置學習過程，比如使用的優化器與損失函數等。</p>
+<p>第一個模型是 Keras MNIST CNN 的範例，宣稱在測試上有 <span class="math inline">\(99.25\%\)</span> 的準確度。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## 設定不同的隱藏層</span></a>
+<a class="sourceLine" id="cb1-2" title="2">model <span class="op">=</span> Sequential()</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">### 兩個卷積層</span></a>
+<a class="sourceLine" id="cb1-4" title="4">model.add(Conv2D(<span class="dv">32</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb1-5" title="5">                 activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>,</a>
+<a class="sourceLine" id="cb1-6" title="6">                 input_shape<span class="op">=</span>input_shape))</a>
+<a class="sourceLine" id="cb1-7" title="7">model.add(Conv2D(<span class="dv">64</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb1-8" title="8">model.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb1-9" title="9">model.add(Dropout(<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co">### 隱藏層</span></a>
+<a class="sourceLine" id="cb1-11" title="11">model.add(Flatten())</a>
+<a class="sourceLine" id="cb1-12" title="12">model.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb1-13" title="13">model.add(Dropout(<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">### 輸出層</span></a>
+<a class="sourceLine" id="cb1-15" title="15">model.add(Dense(num_classes, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>))</a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">## 訓練參數設定</span></a>
+<a class="sourceLine" id="cb1-18" title="18">batch_size <span class="op">=</span> <span class="dv">128</span></a>
+<a class="sourceLine" id="cb1-19" title="19">epochs <span class="op">=</span> <span class="dv">12</span></a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">model.<span class="bu">compile</span>(loss<span class="op">=</span>keras.losses.categorical_crossentropy,</a>
+<a class="sourceLine" id="cb1-22" title="22">              optimizer<span class="op">=</span>keras.optimizers.Adadelta(),</a>
+<a class="sourceLine" id="cb1-23" title="23">              metrics<span class="op">=</span>[<span class="st">&#39;accuracy&#39;</span>])</a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="co">## 開始訓練</span></a>
+<a class="sourceLine" id="cb1-26" title="26">model.fit(x_train, y_train,</a>
+<a class="sourceLine" id="cb1-27" title="27">          batch_size<span class="op">=</span>batch_size,</a>
+<a class="sourceLine" id="cb1-28" title="28">          epochs<span class="op">=</span>epochs,</a>
+<a class="sourceLine" id="cb1-29" title="29">          verbose<span class="op">=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1-30" title="30">          validation_data<span class="op">=</span>(x_test, y_test))</a>
+<a class="sourceLine" id="cb1-31" title="31"></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="co">## 儲存模型</span></a>
+<a class="sourceLine" id="cb1-33" title="33">model.save(<span class="st">&#39;cnn_model_example.h5&#39;</span>)</a>
+<a class="sourceLine" id="cb1-34" title="34"><span class="co">## 載入模型</span></a>
+<a class="sourceLine" id="cb1-35" title="35">model <span class="op">=</span> load_model(<span class="st">&#39;cnn_model_example.h5&#39;</span>)</a></code></pre></div>
+<p>第二到第五個模型是自行設定的神經網路，是以不同想法所構建。 但是在訓練參數的設定上統一使用 <code>batch_size = 128</code> 以及 <code>epochs = 12</code>。</p>
+<p>第二個模型在卷積的視窗大小稍作改變，另外多加一層隱藏層。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="co">## model_2</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">## 設定不同的隱藏層</span></a>
+<a class="sourceLine" id="cb2-3" title="3">model_2 <span class="op">=</span> Sequential()</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">### 兩個卷積層</span></a>
+<a class="sourceLine" id="cb2-5" title="5">model_2.add(Conv2D(<span class="dv">32</span>, kernel_size<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb2-6" title="6">                 activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>,</a>
+<a class="sourceLine" id="cb2-7" title="7">                 input_shape<span class="op">=</span>input_shape))</a>
+<a class="sourceLine" id="cb2-8" title="8">model_2.add(Conv2D(<span class="dv">64</span>, (<span class="dv">5</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb2-9" title="9">model_2.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb2-10" title="10">model_2.add(Dropout(<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">### 隱藏層(核心層)</span></a>
+<a class="sourceLine" id="cb2-12" title="12">model_2.add(Flatten())</a>
+<a class="sourceLine" id="cb2-13" title="13">model_2.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb2-14" title="14">model_2.add(Dropout(<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb2-15" title="15">model_2.add(Dense(<span class="dv">64</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb2-16" title="16">model_2.add(Dropout(<span class="fl">0.3</span>))</a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">### 輸出層</span></a>
+<a class="sourceLine" id="cb2-18" title="18">model_2.add(Dense(num_classes, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>))</a>
+<a class="sourceLine" id="cb2-19" title="19"></a>
+<a class="sourceLine" id="cb2-20" title="20"><span class="co">## 訓練參數設定</span></a>
+<a class="sourceLine" id="cb2-21" title="21">batch_size <span class="op">=</span> <span class="dv">128</span></a>
+<a class="sourceLine" id="cb2-22" title="22">epochs <span class="op">=</span> <span class="dv">12</span></a>
+<a class="sourceLine" id="cb2-23" title="23"></a>
+<a class="sourceLine" id="cb2-24" title="24">model_2.<span class="bu">compile</span>(loss<span class="op">=</span>keras.losses.categorical_crossentropy,</a>
+<a class="sourceLine" id="cb2-25" title="25">              optimizer<span class="op">=</span>keras.optimizers.Adadelta(),</a>
+<a class="sourceLine" id="cb2-26" title="26">              metrics<span class="op">=</span>[<span class="st">&#39;accuracy&#39;</span>])</a>
+<a class="sourceLine" id="cb2-27" title="27"></a>
+<a class="sourceLine" id="cb2-28" title="28"><span class="co">## 開始訓練</span></a>
+<a class="sourceLine" id="cb2-29" title="29">model_2.fit(x_train, y_train,</a>
+<a class="sourceLine" id="cb2-30" title="30">          batch_size<span class="op">=</span>batch_size,</a>
+<a class="sourceLine" id="cb2-31" title="31">          epochs<span class="op">=</span>epochs,</a>
+<a class="sourceLine" id="cb2-32" title="32">          verbose<span class="op">=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb2-33" title="33">          validation_data<span class="op">=</span>(x_test, y_test))</a>
+<a class="sourceLine" id="cb2-34" title="34"></a>
+<a class="sourceLine" id="cb2-35" title="35"><span class="co">## 儲存模型</span></a>
+<a class="sourceLine" id="cb2-36" title="36">model_2.save(<span class="st">&#39;cnn_model_2.h5&#39;</span>)</a>
+<a class="sourceLine" id="cb2-37" title="37"><span class="co">## 載入模型</span></a>
+<a class="sourceLine" id="cb2-38" title="38">model_2 <span class="op">=</span> load_model(<span class="st">&#39;cnn_model_2.h5&#39;</span>)</a></code></pre></div>
+<p>第三個模型使用較大的卷積視窗，減少核心層的神經元個數。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="co">## model_3</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">## 設定不同的隱藏層</span></a>
+<a class="sourceLine" id="cb3-3" title="3">model_3 <span class="op">=</span> Sequential()</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">### 兩個卷積層</span></a>
+<a class="sourceLine" id="cb3-5" title="5">model_3.add(Conv2D(<span class="dv">32</span>, kernel_size<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb3-6" title="6">                 activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>,</a>
+<a class="sourceLine" id="cb3-7" title="7">                 input_shape<span class="op">=</span>input_shape))</a>
+<a class="sourceLine" id="cb3-8" title="8">model_3.add(Conv2D(<span class="dv">64</span>, (<span class="dv">8</span>, <span class="dv">8</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb3-9" title="9">model_3.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb3-10" title="10">model_3.add(Dropout(<span class="fl">0.3</span>))</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">### 隱藏層</span></a>
+<a class="sourceLine" id="cb3-12" title="12">model_3.add(Flatten())</a>
+<a class="sourceLine" id="cb3-13" title="13">model_3.add(Dense(<span class="dv">32</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb3-14" title="14">model_3.add(Dropout(<span class="fl">0.2</span>))</a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">### 輸出層</span></a>
+<a class="sourceLine" id="cb3-16" title="16">model_3.add(Dense(num_classes, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>))</a>
+<a class="sourceLine" id="cb3-17" title="17"></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">## 訓練參數設定</span></a>
+<a class="sourceLine" id="cb3-19" title="19">batch_size <span class="op">=</span> <span class="dv">128</span></a>
+<a class="sourceLine" id="cb3-20" title="20">epochs <span class="op">=</span> <span class="dv">12</span></a>
+<a class="sourceLine" id="cb3-21" title="21"></a>
+<a class="sourceLine" id="cb3-22" title="22">model_3.<span class="bu">compile</span>(loss<span class="op">=</span>keras.losses.categorical_crossentropy,</a>
+<a class="sourceLine" id="cb3-23" title="23">              optimizer<span class="op">=</span>keras.optimizers.Adadelta(),</a>
+<a class="sourceLine" id="cb3-24" title="24">              metrics<span class="op">=</span>[<span class="st">&#39;accuracy&#39;</span>])</a>
+<a class="sourceLine" id="cb3-25" title="25"></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">## 開始訓練</span></a>
+<a class="sourceLine" id="cb3-27" title="27">model_3.fit(x_train, y_train,</a>
+<a class="sourceLine" id="cb3-28" title="28">          batch_size<span class="op">=</span>batch_size,</a>
+<a class="sourceLine" id="cb3-29" title="29">          epochs<span class="op">=</span>epochs,</a>
+<a class="sourceLine" id="cb3-30" title="30">          verbose<span class="op">=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb3-31" title="31">          validation_data<span class="op">=</span>(x_test, y_test))</a>
+<a class="sourceLine" id="cb3-32" title="32"></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">## 儲存模型</span></a>
+<a class="sourceLine" id="cb3-34" title="34">model_3.save(<span class="st">&#39;cnn_model_3.h5&#39;</span>)</a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">## 載入模型</span></a>
+<a class="sourceLine" id="cb3-36" title="36">model_3 <span class="op">=</span> load_model(<span class="st">&#39;cnn_model_3.h5&#39;</span>)</a></code></pre></div>
+<p>第四個模型利用三層的核心層，搭配不同屏蔽的比例。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="co">## model_4</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">## 設定不同的隱藏層</span></a>
+<a class="sourceLine" id="cb4-3" title="3">model_4 <span class="op">=</span> Sequential()</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">### 兩個卷積層</span></a>
+<a class="sourceLine" id="cb4-5" title="5">model_4.add(Conv2D(<span class="dv">32</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb4-6" title="6">                 activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>,</a>
+<a class="sourceLine" id="cb4-7" title="7">                 input_shape<span class="op">=</span>input_shape))</a>
+<a class="sourceLine" id="cb4-8" title="8">model_4.add(Conv2D(<span class="dv">64</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb4-9" title="9">model_4.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb4-10" title="10">model_4.add(Dropout(<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">### 隱藏層</span></a>
+<a class="sourceLine" id="cb4-12" title="12">model_4.add(Flatten())</a>
+<a class="sourceLine" id="cb4-13" title="13">model_4.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb4-14" title="14">model_4.add(Dropout(<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb4-15" title="15">model_4.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb4-16" title="16">model_4.add(Dropout(<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb4-17" title="17">model_4.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb4-18" title="18">model_4.add(Dropout(<span class="fl">0.75</span>))</a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">### 輸出層</span></a>
+<a class="sourceLine" id="cb4-20" title="20">model_4.add(Dense(num_classes, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>))</a></code></pre></div>
+<p>第五個模型使用四層的核心層，但是神經元的數量遞減，最後一層的神經元個數非常少，可以預期在判識上的準確度不高。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="co">## model_5</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">## 設定不同的隱藏層</span></a>
+<a class="sourceLine" id="cb5-3" title="3">model_5 <span class="op">=</span> Sequential()</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">### 兩個卷積層</span></a>
+<a class="sourceLine" id="cb5-5" title="5">model_5.add(Conv2D(<span class="dv">16</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb5-6" title="6">                 activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>,</a>
+<a class="sourceLine" id="cb5-7" title="7">                 input_shape<span class="op">=</span>input_shape))</a>
+<a class="sourceLine" id="cb5-8" title="8">model_5.add(Conv2D(<span class="dv">128</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb5-9" title="9">model_5.add(MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>)))</a>
+<a class="sourceLine" id="cb5-10" title="10">model_5.add(Dropout(<span class="fl">0.25</span>))</a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">### 隱藏層</span></a>
+<a class="sourceLine" id="cb5-12" title="12">model_5.add(Flatten())</a>
+<a class="sourceLine" id="cb5-13" title="13">model_5.add(Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb5-14" title="14">model_5.add(Dropout(<span class="fl">0.8</span>))</a>
+<a class="sourceLine" id="cb5-15" title="15">model_5.add(Dense(<span class="dv">64</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb5-16" title="16">model_5.add(Dropout(<span class="fl">0.7</span>))</a>
+<a class="sourceLine" id="cb5-17" title="17">model_5.add(Dense(<span class="dv">8</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb5-18" title="18">model_5.add(Dropout(<span class="fl">0.6</span>))</a>
+<a class="sourceLine" id="cb5-19" title="19">model_5.add(Dense(<span class="dv">2</span>, activation<span class="op">=</span><span class="st">&#39;relu&#39;</span>))</a>
+<a class="sourceLine" id="cb5-20" title="20">model_5.add(Dropout(<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="co">### 輸出層</span></a>
+<a class="sourceLine" id="cb5-22" title="22">model_5.add(Dense(num_classes, activation<span class="op">=</span><span class="st">&#39;softmax&#39;</span>))</a>
+<a class="sourceLine" id="cb5-23" title="23"></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="co">## 訓練參數設定</span></a>
+<a class="sourceLine" id="cb5-25" title="25">batch_size <span class="op">=</span> <span class="dv">128</span></a>
+<a class="sourceLine" id="cb5-26" title="26">epochs <span class="op">=</span> <span class="dv">12</span></a>
+<a class="sourceLine" id="cb5-27" title="27"></a>
+<a class="sourceLine" id="cb5-28" title="28">model_5.<span class="bu">compile</span>(loss<span class="op">=</span>keras.losses.categorical_crossentropy,</a>
+<a class="sourceLine" id="cb5-29" title="29">              optimizer<span class="op">=</span>keras.optimizers.Adadelta(),</a>
+<a class="sourceLine" id="cb5-30" title="30">              metrics<span class="op">=</span>[<span class="st">&#39;accuracy&#39;</span>])</a>
+<a class="sourceLine" id="cb5-31" title="31">              </a>
+<a class="sourceLine" id="cb5-32" title="32"><span class="co">## 開始訓練</span></a>
+<a class="sourceLine" id="cb5-33" title="33">model_5.fit(x_train, y_train,</a>
+<a class="sourceLine" id="cb5-34" title="34">          batch_size<span class="op">=</span>batch_size,</a>
+<a class="sourceLine" id="cb5-35" title="35">          epochs<span class="op">=</span>epochs,</a>
+<a class="sourceLine" id="cb5-36" title="36">          verbose<span class="op">=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb5-37" title="37">          validation_data<span class="op">=</span>(x_test, y_test))</a>
+<a class="sourceLine" id="cb5-38" title="38"></a>
+<a class="sourceLine" id="cb5-39" title="39"><span class="co">## 儲存模型</span></a>
+<a class="sourceLine" id="cb5-40" title="40">model_5.save(<span class="st">&#39;cnn_model_5.h5&#39;</span>)</a>
+<a class="sourceLine" id="cb5-41" title="41"><span class="co">## 載入模型</span></a>
+<a class="sourceLine" id="cb5-42" title="42">model_5 <span class="op">=</span> load_model(<span class="st">&#39;cnn_model_5.h5&#39;</span>)</a></code></pre></div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
